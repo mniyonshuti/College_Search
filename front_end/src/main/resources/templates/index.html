@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lumen/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iqcNtN3rj6Y1HX/R0a3zu3ngmbdwEa9qQGHdkXwSRoiE+Gj71p0UNDSm99LcXiXV" crossorigin="anonymous">
+</head>
+<body>
+<div>
+    <div class="container mt-3">
+        <h2 class="mb-4 mb-3">Enter search details here</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <form action="/search" th:object="${searchParams}" method="post">
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="zipCode">ZipCode</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input id="zipCode" type="number" placeholder="Enter ZipCode"
+                                           th:field="${searchParams.zipCode}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="distance">Enter Distance</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input id="distance" type="number" placeholder="Enter search radius"
+                                           th:field="${searchParams.distance}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="predominantDegrees">Predominant Degrees</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input id="predominantDegrees" type="text"
+                                           placeholder="enter predominant degrees separated by comas"
+                                           th:field="${searchParams.predominantDegrees}" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="year">Enter Year</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <input id="year" type="number" placeholder="Enter Year"
+                                           th:field="${searchParams.year}"
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button id="submit" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk-X9zQpYix4tLG82_42AWRtULmcF0QQA&callback=initMap"
+        type="text/javascript">
+</script>
+</html>

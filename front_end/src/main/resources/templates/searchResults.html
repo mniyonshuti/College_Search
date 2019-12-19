@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lumen/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iqcNtN3rj6Y1HX/R0a3zu3ngmbdwEa9qQGHdkXwSRoiE+Gj71p0UNDSm99LcXiXV" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" ></script>
+</head>
+<body>
+
+<div class="container mt-3">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h2 class="mb-4 mb-3">Search Results</h2>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">School Name</th>
+                        <th scope="col">Students Size</th>
+                        <th scope="col">School Id</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="college,iterStat : ${colleges}">
+                        <th scope="row" th:text="${iterStat.count}"></th>
+                        <td th:text="${college.schoolName}"></td>
+                        <td th:text="${college.studentsSize}"></td>
+                        <td th:text="${college.id}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-3">
+                <h2 class="mb-4 mb-3">Map</h2>
+                <div id="map" style="height: 500px; width: auto"></div>
+            </div>
+        </div>
+        <input id = "zipCode" type="hidden" th:value="${zipCode}">
+    </div>
+    <script src="../js/country.js" type="application/javascript"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk-X9zQpYix4tLG82_42AWRtULmcF0QQA&callback=initMap"
+            type="text/javascript">
+    </script>
+</div>
+</body>
+</html>

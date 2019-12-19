@@ -1,6 +1,10 @@
 package niyo.moses.demo.controller;
 
 import com.google.gson.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import niyo.moses.demo.dto.CollegeDTO;
 import niyo.moses.demo.dto.SearchParametersWrapper;
 import niyo.moses.demo.service.CollegeDTOService;
@@ -8,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +24,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/college")
+@Api(value = "College_Backend", description = "College search App")
 public class CollegeController {
 
 
@@ -32,7 +38,12 @@ public class CollegeController {
         return new RestTemplate();
     }
 
+
     @PostMapping("/search")
+    @ApiOperation(value = "Returns Colleges within a search radius sorted by the number of students")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Call successful")
+    })
     public ResponseEntity<String> collegeSearchResults(@RequestBody SearchParametersWrapper searchParametersWrapper) {
         if(searchParametersWrapper == null){
             return new ResponseEntity<String>("Invalid search parameters", HttpStatus.BAD_REQUEST);
@@ -52,7 +63,7 @@ public class CollegeController {
         JsonElement metadata = jsonObject.get("metadata");
         JsonObject metadata2 = (JsonObject) jsonParser.parse(String.valueOf(jsonObject.get("metadata")));
         int totalRecords = gson.fromJson(metadata2.get("total"), Integer.class);
-        int numberOfPages = totalRecords / 100;
+        int numberOfPages = totalRecords / 20;
 
         //Search results
         JsonArray colleges = jsonObject.get("results").getAsJsonArray();

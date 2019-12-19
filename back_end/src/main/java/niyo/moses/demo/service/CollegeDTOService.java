@@ -24,7 +24,7 @@ public class CollegeDTOService {
     public String uriConstructor(SearchParametersWrapper searchParametersWrapper, int page) {
         return "https://api.data.gov/ed/collegescorecard/v1/schools.json?" +
                 "school.degrees_awarded.predominant="+searchParametersWrapper.getPredominantDegrees()+
-                "&fields=id,school.name,"+searchParametersWrapper.getYear()+".student.size&per_page=100&zip=52557" +
+                "&fields=id,school.name,"+searchParametersWrapper.getYear()+".student.size&per_page=20&zip=" +searchParametersWrapper.getZipCode() +
                 "&distance="+searchParametersWrapper.getDistance()+"mi&api_key=leQg9UgJNRHjgbwhhZGzRk8R1N589zuXVz9GRnQw" +
                 "&page="+page;
     }
