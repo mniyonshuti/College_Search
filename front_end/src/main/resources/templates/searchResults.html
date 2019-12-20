@@ -6,7 +6,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lumen/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iqcNtN3rj6Y1HX/R0a3zu3ngmbdwEa9qQGHdkXwSRoiE+Gj71p0UNDSm99LcXiXV" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" ></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
 </head>
 <body>
 
@@ -42,13 +42,16 @@
                 <div id="map" style="height: 500px; width: auto"></div>
             </div>
         </div>
-        <input id = "zipCode" type="hidden" th:value="${zipCode}">
+
+        <input id="zipCode" type="hidden" th:value="${zipCode}">
+
     </div>
-    <script src="../js/country.js" type="application/javascript"></script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk-X9zQpYix4tLG82_42AWRtULmcF0QQA&callback=initMap"
-            type="text/javascript">
-    </script>
 </div>
+<script src="../js/country.js" type="application/javascript"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk-X9zQpYix4tLG82_42AWRtULmcF0QQA&callback=initMap"
+        type="text/javascript">
+</script>
+
 </body>
 </html>
